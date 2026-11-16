@@ -1,0 +1,198 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.page {
+  min-height: 100vh;
+  background-color: #EFECE6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.phone {
+  width: 100%;
+  max-width: 380px;
+  min-height: 760px;
+  background-color: #F4F1EA;
+  border-radius: 36px;
+  border: 6px solid #E5E0D3;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Topo */
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Conteúdo */
+.conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.imagemWrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #fff;
+  height: 140px;
+}
+
+.imagem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nome {
+  font-size: 16px;
+  color: #0b3c3c;
+  margin: 0;
+  font-weight: 700;
+}
+
+.preco {
+  font-size: 18px;
+  font-weight: 800;
+  color: #0b3c3c;
+  margin: 0;
+}
+
+.disponibilidadeTitulo {
+  font-size: 11px;
+  color: #666;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Disponibilidade na loja */
+.lojaLista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lojaCard {
+  background-color: #FDF2E9;
+  border: 1px solid #F5B041;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lojaNome {
+  font-size: 12px;
+  font-weight: 700;
+  color: #7E5109;
+}
+
+.lojaEstoque {
+  font-size: 10px;
+  color: #B9770E;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.lojaCorredor {
+  background-color: #D4AC0D;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.lojaAviso {
+  background-color: #FEF9E7;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 10px;
+  font-size: 10px;
+  color: #7D6608;
+}
+
+/* Ações */
+.acoes {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 500;
+  margin-top: 12px;
+}
+
+/* Modal do Google Maps */
+.mapsOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.mapsIcone {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.mapsTitulo {
+  font-size: 18px;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+}
+
+.mapsTexto {
+  font-size: 12px;
+  color: #ddd;
+  margin: 0 0 20px 0;
+  line-height: 1.4;
+}
+
+.mapsContador {
+  font-size: 13px;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.indicador {
+  width: 80px;
+  height: 4px;
+  background-color: #ccc;
+  border-radius: 2px;
+  margin: 8px auto 0 auto;
+}

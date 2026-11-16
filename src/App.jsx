@@ -4,7 +4,7 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/Home/HomePage";
 import CatalogPage from "./pages/Catalogo/CatalogPage";
 import ScanPage from "./pages/ScanPage/ScanPage";
 import ResultPage from "./pages/ResultPage/ResultPage";
@@ -14,8 +14,7 @@ import CheckoutPage from "./pages/Checkout/CheckoutPage";
 import Login from "./pages/Login/Login";
 import Cadastro from "./pages/Cadastro/Cadastro";
 import BoasVindas from "./pages/BoasVindas/BoasVindas";
-
-
+import PermissionPage from "./pages/PermissaoAcesso/PermissaoAcesso";
 
 export default function App() {
   return (
@@ -31,6 +30,7 @@ export default function App() {
         <Route path="/store-map" element={<StoreMapPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/cadastro" element={<Cadastro/>} />
+        <Route path="/permission" element={<PermissionPage />} />
       </Routes>
     </Router>
   );

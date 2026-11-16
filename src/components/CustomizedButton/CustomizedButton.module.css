@@ -5,6 +5,7 @@
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
+  font-family: 'Poppins', sans-serif;
   justify-content: center;
   height: 51px;
   box-sizing: border-box;
@@ -45,7 +46,8 @@
 /* Texto Clicável */
 .texto {
   background-color: transparent;
-  color: #105666;
+  color: #0A8A1F;
+  font-family: 'Poppins', sans-serif;
   border: none;
   
 
@@ -64,4 +66,16 @@
 .texto:hover {
   text-decoration: nome;
   opacity: 0.8;
+}
+
+.conteudo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.icone {
+  display: inline-flex;
+  line-height: 0;
 }

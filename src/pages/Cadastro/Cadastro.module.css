@@ -1,3 +1,8 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+
 .container {
   width: 100%;
   max-width: 440px; /* Mantém o formato de cartão centralizado */
@@ -12,20 +17,27 @@
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+ 
 }
-
+.headerContent{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  
+  
+}
 .title {
   color: #0A3323;
-  margin-bottom: 0.4rem;
-  font-size: 1.6rem;
-  font-weight: 650;
+  margin: 0;
+ 
 }
 
 .subtitle {
   color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 2rem;
+  font-weight: 500;
+  margin: 0;
 }
 
 .form {

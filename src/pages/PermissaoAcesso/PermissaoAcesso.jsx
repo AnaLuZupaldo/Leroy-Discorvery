@@ -9,7 +9,7 @@ import { StepPreferencias } from '../../components/PermissoesSteps/StepPreferenc
 import { StepSucesso } from '../../components/PermissoesSteps/StepSucesso';
 import styles from './PermissaoAcesso.module.css';
 
-export function PermissaoAcesso({ onVoltarGeral, onConcluir }) {
+export default function PermissaoAcesso({ onVoltarGeral, onConcluir }) {
   const [passo, setPasso] = useState(1);
 
   const voltarPasso = () => {

@@ -95,3 +95,8 @@
   flex-direction: column;
   gap: 12px;
 }
+
+.continueButton{
+  color: #0A8A1F;
+  
+}

@@ -1,31 +1,33 @@
-import { useState } from 'react';
-import { 
-  User, 
-  Mail, 
-  Smartphone, 
-  Lock, 
-  Check, 
-  Eye, 
-  EyeOff, 
+import { useState } from "react";
+import {
+  User,
+  Mail,
+  Smartphone,
+  Lock,
+  Check,
+  Eye,
+  EyeOff,
   Circle,
-  ShieldCheck
-} from 'lucide-react';
-import { BackButton } from '../../components/BackButton/BackButton';
-import styles from './Cadastro.module.css';
+  ShieldCheck,
+} from "lucide-react";
+import { BackButton } from "../../components/BackButton/BackButton";
+import styles from "./Cadastro.module.css";
+import { useNavigate } from "react-router-dom";
 
-export function Cadastro({ onVoltar, onSucesso }) {
+export default function Cadastro() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    nomeCompleto: '',
-    email: '',
-    celular: '',
-    senha: ''
+    nomeCompleto: "",
+    email: "",
+    celular: "",
+    senha: "",
   });
 
   const [touched, setTouched] = useState({
     nomeCompleto: false,
     email: false,
     celular: false,
-    senha: false
+    senha: false,
   });
 
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -34,13 +36,13 @@ export function Cadastro({ onVoltar, onSucesso }) {
 
   const validarNome = (nome) => {
     const partes = nome.trim().split(/\s+/);
-    return partes.length >= 2 && partes.every(parte => parte.length >= 2);
+    return partes.length >= 2 && partes.every((parte) => parte.length >= 2);
   };
 
   const validarEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  
+
   const validarCelular = (cel) => {
-    const apenasNumeros = cel.replace(/\D/g, '');
+    const apenasNumeros = cel.replace(/\D/g, "");
     return apenasNumeros.length >= 10;
   };
 
@@ -48,10 +50,11 @@ export function Cadastro({ onVoltar, onSucesso }) {
   const temMaiuscula = /[A-Z]/.test(formData.senha);
   const temMinuscula = /[a-z]/.test(formData.senha);
   const temNumero = /\d/.test(formData.senha);
-  
-  const senhaValida = temOitoCaracteres && temMaiuscula && temMinuscula && temNumero;
 
-  const formularioValido = 
+  const senhaValida =
+    temOitoCaracteres && temMaiuscula && temMinuscula && temNumero;
+
+  const formularioValido =
     validarNome(formData.nomeCompleto) &&
     validarEmail(formData.email) &&
     validarCelular(formData.celular) &&
@@ -59,9 +62,9 @@ export function Cadastro({ onVoltar, onSucesso }) {
     aceitoTermos;
 
   const formatarCelular = (valor) => {
-    const apenasNumeros = valor.replace(/\D/g, '');
+    const apenasNumeros = valor.replace(/\D/g, "");
     if (apenasNumeros.length <= 2) {
-      return apenasNumeros.length ? `(${apenasNumeros}` : '';
+      return apenasNumeros.length ? `(${apenasNumeros}` : "";
     }
     if (apenasNumeros.length <= 7) {
       return `(${apenasNumeros.slice(0, 2)}) ${apenasNumeros.slice(2)}`;
@@ -71,16 +74,16 @@ export function Cadastro({ onVoltar, onSucesso }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'celular') {
+    if (name === "celular") {
       const valorFormatado = formatarCelular(value);
-      setFormData(prev => ({ ...prev, [name]: valorFormatado }));
+      setFormData((prev) => ({ ...prev, [name]: valorFormatado }));
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
   const handleBlur = (field) => {
-    setTouched(prev => ({ ...prev, [field]: true }));
+    setTouched((prev) => ({ ...prev, [field]: true }));
   };
 
   const handleSubmit = (e) => {
@@ -88,7 +91,11 @@ export function Cadastro({ onVoltar, onSucesso }) {
     setTouched({ nomeCompleto: true, email: true, celular: true, senha: true });
 
     if (formularioValido) {
-      console.log("Dados enviados:", { ...formData, aceitoTermos, receberOfertas });
+      console.log("Dados enviados:", {
+        ...formData,
+        aceitoTermos,
+        receberOfertas,
+      });
       if (onSucesso) {
         onSucesso(); // Redireciona para a tela de permissão de acesso
       }
@@ -96,32 +103,37 @@ export function Cadastro({ onVoltar, onSucesso }) {
   };
 
   const getStatus = (field, isValid) => {
-    if (!touched[field] && formData[field] === '') return 'normal';
-    return isValid ? 'valid' : 'invalid';
+    if (!touched[field] && formData[field] === "") return "normal";
+    return isValid ? "valid" : "invalid";
   };
 
-  const nomeStatus = getStatus('nomeCompleto', validarNome(formData.nomeCompleto));
-  const emailStatus = getStatus('email', validarEmail(formData.email));
-  const celularStatus = getStatus('celular', validarCelular(formData.celular));
-  const senhaStatus = getStatus('senha', senhaValida);
+  const nomeStatus = getStatus(
+    "nomeCompleto",
+    validarNome(formData.nomeCompleto),
+  );
+  const emailStatus = getStatus("email", validarEmail(formData.email));
+  const celularStatus = getStatus("celular", validarCelular(formData.celular));
+  const senhaStatus = getStatus("senha", senhaValida);
 
   const getContainerClass = (status) => {
-    if (status === 'valid') return `${styles.inputContainer} ${styles.inputContainerValid}`;
-    if (status === 'invalid') return `${styles.inputContainer} ${styles.inputContainerInvalid}`;
+    if (status === "valid")
+      return `${styles.inputContainer} ${styles.inputContainerValid}`;
+    if (status === "invalid")
+      return `${styles.inputContainer} ${styles.inputContainerInvalid}`;
     return styles.inputContainer;
   };
 
   const getIconColor = (status) => {
-    if (status === 'valid') return '#0A3323';
-    if (status === 'invalid') return '#D9534F';
-    return '#666';
+    if (status === "valid") return "#0A3323";
+    if (status === "invalid") return "#D9534F";
+    return "#666";
   };
 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <BackButton onClick={onVoltar} />
-        
+        <BackButton onClick={() => navigate("/login")} />
+
         <div className={styles.progressBar}>
           <div className={styles.progressStepActive}></div>
           <div className={styles.progressStepActive}></div>
@@ -131,28 +143,35 @@ export function Cadastro({ onVoltar, onSucesso }) {
         </div>
       </div>
 
-      <h2 className={styles.title}>Criar Conta</h2>
-      <p className={styles.subtitle}>Preencha os dados e termos para concluir.</p>
+      <header className={styles.headerContent}>
+        <h1 className={styles.title}>Criar Conta</h1>
+        <h5 className={styles.subtitle}>
+          Preencha os dados e termos para concluir.
+        </h5>
+      </header>
 
       <form onSubmit={handleSubmit} className={styles.form}>
-        
         {/* Nome Completo */}
         <div className={styles.fieldGroup}>
           <label className={styles.label}>Nome completo</label>
           <div className={getContainerClass(nomeStatus)}>
             <User size={20} color={getIconColor(nomeStatus)} />
-            <input 
+            <input
               type="text"
               name="nomeCompleto"
               value={formData.nomeCompleto}
               onChange={handleChange}
-              onBlur={() => handleBlur('nomeCompleto')}
+              onBlur={() => handleBlur("nomeCompleto")}
               placeholder="Digite nome completo"
               className={styles.input}
             />
-            {nomeStatus === 'valid' && <Check size={20} color="#0A3323" />}
+            {nomeStatus === "valid" && <Check size={20} color="#0A3323" />}
           </div>
-          {nomeStatus === 'invalid' && <span className={styles.errorText}>Digite o nome e o sobrenome.</span>}
+          {nomeStatus === "invalid" && (
+            <span className={styles.errorText}>
+              Digite o nome e o sobrenome.
+            </span>
+          )}
         </div>
 
         {/* E-mail */}
@@ -160,18 +179,22 @@ export function Cadastro({ onVoltar, onSucesso }) {
           <label className={styles.label}>E-mail</label>
           <div className={getContainerClass(emailStatus)}>
             <Mail size={20} color={getIconColor(emailStatus)} />
-            <input 
+            <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              onBlur={() => handleBlur('email')}
+              onBlur={() => handleBlur("email")}
               placeholder="Digite seu e-mail"
               className={styles.input}
             />
-            {emailStatus === 'valid' && <Check size={20} color="#0A3323" />}
+            {emailStatus === "valid" && <Check size={20} color="#0A3323" />}
           </div>
-          {emailStatus === 'invalid' && <span className={styles.errorText}>Digite um e-mail válido, como nome@email.com</span>}
+          {emailStatus === "invalid" && (
+            <span className={styles.errorText}>
+              Digite um e-mail válido, como nome@email.com
+            </span>
+          )}
         </div>
 
         {/* Celular */}
@@ -179,19 +202,23 @@ export function Cadastro({ onVoltar, onSucesso }) {
           <label className={styles.label}>Celular</label>
           <div className={getContainerClass(celularStatus)}>
             <Smartphone size={20} color={getIconColor(celularStatus)} />
-            <input 
+            <input
               type="tel"
               name="celular"
               value={formData.celular}
               onChange={handleChange}
-              onBlur={() => handleBlur('celular')}
+              onBlur={() => handleBlur("celular")}
               placeholder="(11) 99999-9999"
               maxLength={15}
               className={styles.input}
             />
-            {celularStatus === 'valid' && <Check size={20} color="#0A3323" />}
+            {celularStatus === "valid" && <Check size={20} color="#0A3323" />}
           </div>
-          {celularStatus === 'invalid' && <span className={styles.errorText}>Celular incompleto. Use DDD + 9 dígitos.</span>}
+          {celularStatus === "invalid" && (
+            <span className={styles.errorText}>
+              Celular incompleto. Use DDD + 9 dígitos.
+            </span>
+          )}
         </div>
 
         {/* Senha */}
@@ -199,44 +226,95 @@ export function Cadastro({ onVoltar, onSucesso }) {
           <label className={styles.label}>Senha</label>
           <div className={getContainerClass(senhaStatus)}>
             <Lock size={20} color={getIconColor(senhaStatus)} />
-            <input 
+            <input
               type={mostrarSenha ? "text" : "password"}
               name="senha"
               value={formData.senha}
               onChange={handleChange}
-              onBlur={() => handleBlur('senha')}
+              onBlur={() => handleBlur("senha")}
               placeholder="••••"
               className={styles.input}
             />
-            <button 
-              type="button" 
-              onClick={() => setMostrarSenha(!mostrarSenha)} 
+            <button
+              type="button"
+              onClick={() => setMostrarSenha(!mostrarSenha)}
               className={styles.eyeButton}
             >
-              {mostrarSenha ? <EyeOff size={20} color="#666" /> : <Eye size={20} color="#666" />}
+              {mostrarSenha ? (
+                <EyeOff size={20} color="#666" />
+              ) : (
+                <Eye size={20} color="#666" />
+              )}
             </button>
-            {senhaStatus === 'valid' && <Check size={20} color="#0A3323" style={{ marginLeft: '8px' }} />}
+            {senhaStatus === "valid" && (
+              <Check size={20} color="#0A3323" style={{ marginLeft: "8px" }} />
+            )}
           </div>
-          
-          {senhaStatus === 'invalid' && touched.senha && (
-            <span className={styles.errorText} style={{ marginBottom: '0.3rem' }}>Senha fraca. Complete os itens abaixo.</span>
+
+          {senhaStatus === "invalid" && touched.senha && (
+            <span
+              className={styles.errorText}
+              style={{ marginBottom: "0.3rem" }}
+            >
+              Senha fraca. Complete os itens abaixo.
+            </span>
           )}
 
           <div className={styles.passwordCriteria}>
-            <div className={temOitoCaracteres ? styles.criteriaItemValid : styles.criteriaItemInvalid}>
-              {temOitoCaracteres ? <Check size={14} color="#0A3323" /> : <Circle size={8} color="#999" />}
+            <div
+              className={
+                temOitoCaracteres
+                  ? styles.criteriaItemValid
+                  : styles.criteriaItemInvalid
+              }
+            >
+              {temOitoCaracteres ? (
+                <Check size={14} color="#0A3323" />
+              ) : (
+                <Circle size={8} color="#999" />
+              )}
               <span>Pelo menos 8 caracteres</span>
             </div>
-            <div className={temMaiuscula ? styles.criteriaItemValid : styles.criteriaItemInvalid}>
-              {temMaiuscula ? <Check size={14} color="#0A3323" /> : <Circle size={8} color="#999" />}
+            <div
+              className={
+                temMaiuscula
+                  ? styles.criteriaItemValid
+                  : styles.criteriaItemInvalid
+              }
+            >
+              {temMaiuscula ? (
+                <Check size={14} color="#0A3323" />
+              ) : (
+                <Circle size={8} color="#999" />
+              )}
               <span>Pelo menos 1 letra maiúscula</span>
             </div>
-            <div className={temMinuscula ? styles.criteriaItemValid : styles.criteriaItemInvalid}>
-              {temMinuscula ? <Check size={14} color="#0A3323" /> : <Circle size={8} color="#999" />}
+            <div
+              className={
+                temMinuscula
+                  ? styles.criteriaItemValid
+                  : styles.criteriaItemInvalid
+              }
+            >
+              {temMinuscula ? (
+                <Check size={14} color="#0A3323" />
+              ) : (
+                <Circle size={8} color="#999" />
+              )}
               <span>Pelo menos 1 letra minúscula</span>
             </div>
-            <div className={temNumero ? styles.criteriaItemValid : styles.criteriaItemInvalid}>
-              {temNumero ? <Check size={14} color="#0A3323" /> : <Circle size={8} color="#999" />}
+            <div
+              className={
+                temNumero
+                  ? styles.criteriaItemValid
+                  : styles.criteriaItemInvalid
+              }
+            >
+              {temNumero ? (
+                <Check size={14} color="#0A3323" />
+              ) : (
+                <Circle size={8} color="#999" />
+              )}
               <span>Pelo menos 1 número</span>
             </div>
           </div>
@@ -247,30 +325,40 @@ export function Cadastro({ onVoltar, onSucesso }) {
         {/* Termos e Privacidade */}
         <div className={styles.termsContainer}>
           <div className={styles.alertBox}>
-            <ShieldCheck size={20} color="#0A3323" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <ShieldCheck
+              size={20}
+              color="#0A3323"
+              style={{ flexShrink: 0, marginTop: "2px" }}
+            />
             <span className={styles.alertText}>
-              Usamos a câmera só para analisar o ambiente. Suas fotos não são compartilhadas.
+              Usamos a câmera só para analisar o ambiente. Suas fotos não são
+              compartilhadas.
             </span>
           </div>
 
-          <div 
+          <div
             onClick={() => setAceitoTermos(!aceitoTermos)}
             className={styles.checkboxRow}
           >
-            <div className={`${styles.checkboxBox} ${aceitoTermos ? styles.checkboxBoxChecked : ''}`}>
-              {aceitoTermos && '✓'}
+            <div
+              className={`${styles.checkboxBox} ${aceitoTermos ? styles.checkboxBoxChecked : ""}`}
+            >
+              {aceitoTermos && "✓"}
             </div>
             <span className={styles.checkboxLabel}>
-              Li e aceito os Termos de Uso e a Política de Privacidade (obrigatório)
+              Li e aceito os Termos de Uso e a Política de Privacidade
+              (obrigatório)
             </span>
           </div>
 
-          <div 
+          <div
             onClick={() => setReceberOfertas(!receberOfertas)}
             className={styles.checkboxRow}
           >
-            <div className={`${styles.checkboxBox} ${receberOfertas ? styles.checkboxBoxChecked : ''}`}>
-              {receberOfertas && '✓'}
+            <div
+              className={`${styles.checkboxBox} ${receberOfertas ? styles.checkboxBoxChecked : ""}`}
+            >
+              {receberOfertas && "✓"}
             </div>
             <span className={styles.checkboxLabel}>
               Quero receber ofertas e novidades por e-mail (opcional)
@@ -278,20 +366,26 @@ export function Cadastro({ onVoltar, onSucesso }) {
           </div>
 
           <div>
-            <a href="#politica" onClick={(e) => { e.preventDefault(); alert("Abrir política de privacidade"); }} className={styles.privacyLink}>
+            <a
+              href="#politica"
+              onClick={(e) => {
+                e.preventDefault();
+                alert("Abrir política de privacidade");
+              }}
+              className={styles.privacyLink}
+            >
               Ler Política de Privacidade
             </a>
           </div>
         </div>
 
-        <button 
+        <button
           type="submit"
           disabled={!formularioValido}
           className={styles.submitButton}
         >
           Aceitar e Continuar
         </button>
-
       </form>
     </div>
   );

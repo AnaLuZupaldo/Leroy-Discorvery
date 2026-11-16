@@ -1,54 +1,65 @@
 import React from 'react';
-import { Heart } from 'lucide-react';
-import NoticeBanner from '../NoticeBanner/NoticeBanner';
+import { AlertCircle, Heart, Zap } from 'lucide-react';
 import styles from './ProductCard.module.css';
 
-export default function ProductCard({ 
-  produto, 
-  preco, 
-  mostrarAlerta, 
-  textoAlerta, 
-  isFavorito, 
-  onToggleFavorito 
+const formatarPreco = (valor) =>
+  new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor);
+
+export default function ProdutoCard({
+  nome,
+  preco,
+  imagem,
+  compatibilidade,
+  alerta,
+  favorito = false,
+  onToggleFavorito,
+  onClick
 }) {
+  const precoIndisponivel = typeof preco !== 'number';
+  const Area = onClick ? 'button' : 'div';
+  const areaProps = onClick ? { type: 'button', onClick } : {};
+
   return (
     <div className={styles.card}>
-      
-      {/* Container com a imagem e os detalhes do produto */}
-      <div className={styles.infoContainer}>
-        <img 
-          src={produto.imagem || 'https://via.placeholder.com/80'} 
-          alt={produto.nome} 
-          className={styles.imagem} 
-        />
-        
-        <div className={styles.detalhes}>
-          <h3 className={styles.titulo}>{produto.nome}</h3>
-          
-          <span className={styles.preco}>
-            R$ {typeof preco === 'number' ? preco.toFixed(2) : preco}
+      <Area className={styles.area} {...areaProps}>
+        {imagem ? (
+          <img src={imagem} alt={nome} className={styles.imagem} />
+        ) : (
+          <div className={`${styles.imagem} ${styles.imagemVazia}`} aria-hidden="true" />
+        )}
+
+        <div className={styles.info}>
+          <span className={styles.nome}>{nome}</span>
+
+          <span className={`${styles.preco} ${precoIndisponivel ? styles.precoIndisponivel : ''}`}>
+            {precoIndisponivel ? preco : formatarPreco(preco)}
           </span>
 
-          {/* Exibe o NoticeBanner caso o produto esteja sem estoque */}
-          {mostrarAlerta && <NoticeBanner texto={textoAlerta} />}
+          {compatibilidade != null && (
+            <span className={styles.badge}>
+              <Zap size={12} fill="currentColor" aria-hidden="true" />
+              {compatibilidade}% combina
+            </span>
+          )}
+
+          {alerta && (
+            <span className={`${styles.badge} ${styles.badgeAlerta}`}>
+              <AlertCircle size={12} aria-hidden="true" />
+              {alerta}
+            </span>
+          )}
         </div>
-      </div>
+      </Area>
 
-      {/* Botão de Favoritar */}
-      <button 
-        className={styles.favoriteButton} 
-        onClick={onToggleFavorito}
+      <button
         type="button"
-        aria-label="Favoritar produto"
+        className={`${styles.favorito} ${favorito ? styles.favoritoAtivo : ''}`}
+        onClick={onToggleFavorito}
+        aria-pressed={favorito}
+        aria-label={favorito ? `Remover ${nome} dos salvos` : `Salvar ${nome}`}
       >
-        <Heart 
-          size={20} 
-          className={`${styles.heartIcon} ${isFavorito ? styles.favorito : ''}`}
-          fill={isFavorito ? '#e63946' : 'none'} 
-          strokeWidth={2.5} 
-        />
+        <Heart size={22} fill={favorito ? 'currentColor' : 'none'} aria-hidden="true" />
       </button>
-
     </div>
   );
 }

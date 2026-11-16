@@ -1,8 +1,10 @@
 import { Check } from 'lucide-react';
 import BotaoCustomizado from '../../components/CustomizedButton/CustomizedButton';
 import styles from './PermissoesSteps.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export function StepSucesso({ onEscanear, onExplorar }) {
+  const navigate = useNavigate();
   return (
     <div className={styles.stepContent}>
       <div className={styles.iconContainerSuccess}>
@@ -35,12 +37,12 @@ export function StepSucesso({ onEscanear, onExplorar }) {
           texto="Escanear meu primeiro ambiente"
           tamanho="grande"
           variante="verde"
-          onClick={onEscanear}
+          onClick={() => navigate("/scan")}
         />
         
         <button 
           type="button" 
-          onClick={onExplorar}
+          onClick={() => navigate("/Home")}
           className={styles.textActionLink}
           style={{ width: '100%', textAlign: 'center', marginTop: '0.8rem' }}
         >

@@ -3,8 +3,10 @@ import { Mail, Lock, Eye, EyeOff, ScanFace } from 'lucide-react';
 import { BackButton } from '../../components/BackButton/BackButton'; // Ajusta o caminho se necessário
 import CustomizedButton from '../../components/CustomizedButton/CustomizedButton';
 import styles from './Login.module.css';
+import { useNavigate } from 'react-router-dom';
 
-export function Login({ onEntrar, onIrParaCadastro, onVoltar }) {
+export default function Login({ onEntrar, onIrParaCadastro, onVoltar }) {
+   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [mostrarSenha, setMostrarSenha] = useState(false);
@@ -16,11 +18,13 @@ export function Login({ onEntrar, onIrParaCadastro, onVoltar }) {
     }
   };
 
+ 
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.header}>
-          {onVoltar && <BackButton onClick={onVoltar} />}
+          <BackButton onClick={() => navigate('/login')} />
         </div>
 
         <h1 className={styles.title}>Que bom ver você de novo</h1>
@@ -122,7 +126,7 @@ export function Login({ onEntrar, onIrParaCadastro, onVoltar }) {
           <span>Não tem conta? </span>
           <button 
             type="button" 
-            onClick={onIrParaCadastro}
+            onClick={() => navigate('/cadastro')}
             className={styles.linkButton}
           >
             Criar conta

@@ -1,0 +1,370 @@
+.page {
+  min-height: 100vh;
+  background-color: #EFECE6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.phone {
+  width: 100%;
+  max-width: 380px;
+  min-height: 760px;
+  background-color: #F4F1EA;
+  border-radius: 36px;
+  border: 6px solid #E5E0D3;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Tabs */
+.topo {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+}
+
+.seletor {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.seletorBotao {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 8px 2px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6F7F78;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.seletorBotao:hover {
+  color: #0b3c3c;
+}
+
+.seletorBotao:focus-visible {
+  outline: 2px solid #0b3c3c;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.seletorBotaoAtivo {
+  color: #0b3c3c;
+  font-weight: 600;
+  border-bottom-color: #0b3c3c;
+}
+
+/* Títulos compartilhados */
+.titulo {
+  font-size: 18px;
+  color: #0b3c3c;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* H1: No caixa */
+.caixa {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+  overflow-y: auto;
+}
+
+.itensCard {
+  background-color: #fff;
+  border: 1px solid #E0DBB0;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.itemLinha {
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+}
+
+.subtitulo {
+  font-size: 11px;
+  font-weight: 700;
+  color: #0b3c3c;
+  margin-top: 2px;
+}
+
+.beneficios {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.beneficioCard {
+  background-color: #E8F8F5;
+  border: 1px solid #A3E4D7;
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.beneficioTexto {
+  font-size: 10px;
+}
+
+.beneficioTitulo {
+  font-weight: 700;
+  color: #0E6655;
+}
+
+.beneficioDescricao {
+  color: #117A65;
+}
+
+.beneficioValor {
+  font-size: 11px;
+  font-weight: 800;
+  color: #C0392B;
+}
+
+.resumo {
+  border-top: 1px solid #E0DBB0;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+  margin-top: auto;
+}
+
+.resumoLinha {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resumoSubtotal {
+  color: #666;
+}
+
+.resumoDesconto {
+  color: #C0392B;
+}
+
+.resumoTotal {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0b3c3c;
+  margin-top: 2px;
+}
+
+/* H2: Pagamento */
+.pagamento {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opcao {
+  background-color: #fff;
+  border: 1px solid #E0DBB0;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.opcaoAtiva {
+  border: 2px solid #0b3c3c;
+}
+
+.opcaoInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0b3c3c;
+}
+
+.opcaoDescricao {
+  font-size: 10px;
+  color: #666;
+  font-weight: 400;
+}
+
+.totalCard {
+  background-color: #F0ECE1;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.totalRotulo {
+  font-size: 10px;
+  color: #666;
+}
+
+.totalValor {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0b3c3c;
+}
+
+/* H3: Cupom para o caixa */
+.cupom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.cupomCard {
+  background-color: #FEF9E7;
+  border: 2px dashed #F5B041;
+  border-radius: 16px;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cupomTitulo {
+  font-size: 11px;
+  font-weight: 700;
+  color: #7E5109;
+  margin-bottom: 8px;
+}
+
+.cupomCodigo {
+  font-size: 26px;
+  font-weight: 800;
+  color: #0b3c3c;
+  letter-spacing: 2px;
+  margin: 10px 0;
+}
+
+.cupomDescricao {
+  font-size: 10px;
+  color: #666;
+}
+
+.cupomTimer {
+  font-size: 12px;
+  background-color: #E0F2F1;
+  color: #004D40;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* H4: Compra concluída */
+.concluido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.concluidoIcone {
+  width: 70px;
+  height: 70px;
+  background-color: #E0F2F1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #00695C;
+}
+
+.concluidoTitulo {
+  font-size: 18px;
+  color: #0b3c3c;
+  margin: 0;
+  font-weight: 700;
+}
+
+.concluidoTexto {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+  max-width: 240px;
+  line-height: 1.4;
+}
+
+.pontosCard {
+  width: 100%;
+  background-color: #E8F8F5;
+  border: 1px solid #A3E4D7;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 11px;
+}
+
+.pontosTitulo {
+  font-weight: 700;
+  color: #0E6655;
+}
+
+.pontosValor {
+  font-size: 13px;
+  font-weight: 800;
+  color: #117A65;
+}
+
+/* Ações na base */
+.acoes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.indicador {
+  width: 80px;
+  height: 4px;
+  background-color: #ccc;
+  border-radius: 2px;
+  margin: 8px auto 0 auto;
+}

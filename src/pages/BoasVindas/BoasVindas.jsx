@@ -3,8 +3,12 @@ import CustomizedButton from '../../components/CustomizedButton/CustomizedButton
 import logoImg from '../../assets/logo.png';
 import bannerImg from '../../assets/banner.jpg';
 import styles from './BoasVindas.module.css';
+import { useNavigate } from 'react-router-dom';
 
-export function BoasVindas({ onCriarConta, onJaTenhoConta, onContinuarSemCadastro }) {
+export default function BoasVindas() {
+
+   const navigate = useNavigate();
+
   return (
     <div className={styles.container}>
       <div className={styles.card}>
@@ -62,21 +66,22 @@ export function BoasVindas({ onCriarConta, onJaTenhoConta, onContinuarSemCadastr
             texto="Criar conta"
             tamanho="grande"
             variante="verde"
-            onClick={onCriarConta}
+            onClick={() => navigate('/cadastro')}
           />
 
           <CustomizedButton 
             texto="Já tenho conta"
             tamanho="grande"
             variante="branco"
-            onClick={onJaTenhoConta}
+            onClick={() => navigate('/login')}
           />
 
           <CustomizedButton 
             texto="Continuar sem cadastro"
+            className={styles.continueButton}
             tamanho="grande"
             variante="texto" /* Ou "link", dependendo do nome no teu CustomizedButton */
-            onClick={onContinuarSemCadastro}
+            onClick={() => navigate('/home')}
           />
         </div>
 

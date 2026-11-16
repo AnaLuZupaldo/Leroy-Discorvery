@@ -1,0 +1,58 @@
+.painel {
+  width: 100%;
+  height: 380px;
+  background-color: #617364;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.painelTexto {
+  font-size: 13px;
+  margin: 0 0 12px 0;
+}
+
+.barra {
+  width: 160px;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barraProgresso {
+  width: 70%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  padding: 6px 12px;
+  font-size: 11px;
+  border-radius: 16px;
+  font-weight: 500;
+}
+
+.tagOk {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.tagAlerta {
+  background-color: #FFEBEE;
+  color: #C62828;
+}
+.botaoCancelar{
+  display: flex;
+  align-items: center;
+}

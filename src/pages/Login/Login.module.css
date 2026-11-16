@@ -1,3 +1,8 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+
 .container {
   width: 100%;
   min-height: 100vh;
@@ -13,11 +18,12 @@
 .card {
   width: 100%;
   max-width: 420px;
+  height: auto;
   background-color: #F4F3EA;
   border: 1px solid #C8C7B7;
   border-radius: 28px;
   box-shadow: 0 4px 20px rgba(10, 51, 35, 0.05);
-  padding: 28px 24px;
+  padding: 30px 30px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -167,6 +173,7 @@
 .actions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   margin-top: 0.5rem;
 }
