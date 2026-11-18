@@ -8,9 +8,11 @@ import { StepNotificacao } from '../../components/PermissoesSteps/StepNotificaca
 import { StepPreferencias } from '../../components/PermissoesSteps/StepPreferencias';
 import { StepSucesso } from '../../components/PermissoesSteps/StepSucesso';
 import styles from './PermissaoAcesso.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function PermissaoAcesso({ onVoltarGeral, onConcluir }) {
   const [passo, setPasso] = useState(1);
+  const navigate = useNavigate();
 
   const voltarPasso = () => {
     if (passo > 1) {
@@ -27,7 +29,7 @@ export default function PermissaoAcesso({ onVoltarGeral, onConcluir }) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        {passo < 7 && <BackButton onClick={voltarPasso} />}
+        {passo < 7 && <BackButton onClick={() => navigate(-1)} />}
       </div>
 
       {passo === 1 && <StepCamera onAvancar={() => setPasso(2)} />}

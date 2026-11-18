@@ -132,7 +132,7 @@ export default function Cadastro() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <BackButton onClick={() => navigate("/login")} />
+        <BackButton onClick={() => navigate("/")} />
 
         <div className={styles.progressBar}>
           <div className={styles.progressStepActive}></div>

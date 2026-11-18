@@ -24,7 +24,7 @@ export default function Login({ onEntrar, onIrParaCadastro, onVoltar }) {
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.header}>
-          <BackButton onClick={() => navigate('/login')} />
+          <BackButton onClick={() => navigate('/')} />
         </div>
 
         <h1 className={styles.title}>Que bom ver você de novo</h1>
