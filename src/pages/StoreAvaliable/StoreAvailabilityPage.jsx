@@ -128,7 +128,7 @@ export default function StoreAvailabilityPage() {
             texto="Localização da Loja de Pinheiros"
             tamanho="grande"
             variante="branco"
-            onClick={handleAbrirGoogleMaps}
+            onClick={() => navigate('/store-map')}
           />
         </div>
 

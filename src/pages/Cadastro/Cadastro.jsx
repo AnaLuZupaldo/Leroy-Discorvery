@@ -383,6 +383,7 @@ export default function Cadastro() {
           type="submit"
           disabled={!formularioValido}
           className={styles.submitButton}
+          onClick={()=> navigate('/home')}
         >
           Aceitar e Continuar
         </button>

@@ -108,6 +108,7 @@ export default function Login({ onEntrar, onIrParaCadastro, onVoltar }) {
               texto="Entrar"
               tamanho="grande"
               variante="verde"
+              onClick={() => navigate('/home')}
               tipo="submit"
             />
 
